@@ -5,10 +5,15 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Inventory : ScriptableObject
 {
-    public InventoryItem[] Items;
+    public List<InventoryItem> Items = new List<InventoryItem>();
 
     public void Clear()
     {
-        Items = new InventoryItem[0];
+        Items.Clear();
+    }
+
+    public void Add(InventoryItem item)
+    {
+        Items.Add(item);
     }
 }

@@ -23,3 +23,24 @@ public class EventListener : MonoBehaviour
         Response.Invoke();
     }
 }
+
+public class EventListener<TArg> : MonoBehaviour
+{
+    public Event<TArg> Event;
+    public UnityEvent<TArg> Response;
+
+    void OnEnable()
+    {
+        Event.Register(this);
+    }
+
+    void OnDisable()
+    {
+        Event.Unregister(this);
+    }
+
+    public void OnEventRaised(TArg arg)
+    {
+        Response.Invoke(arg);
+    }
+}
